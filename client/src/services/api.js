@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: 'https://notemind-ai-rhmn.onrender.com',
   timeout: 180000, // 3 minutes — AI processing takes time
 });
 
