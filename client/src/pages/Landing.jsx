@@ -101,7 +101,7 @@ export default function Landing() {
       {/* Footer */}
       <footer className="footer">
         <div className="container">
-          <p>© 2026 NoteMind AI. Built for students, by students.</p>
+          <p>© 2026 BrainNova.AI. Built for students, by students.</p>
         </div>
       </footer>
     </div>

@@ -1,7 +1,7 @@
 {
-  "name": "notemind-server",
+  "name": "brainnova-server",
   "version": "1.0.0",
-  "description": "NoteMind AI - Backend Server",
+  "description": "BrainNova.AI - Backend Server",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

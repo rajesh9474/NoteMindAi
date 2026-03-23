@@ -1,4 +1,4 @@
-     -- NoteMind AI Database Migration
+     -- BrainNova.AI Database Migration
 -- Run this SQL in your Supabase SQL Editor
 
 -- 1. Users table

@@ -22,7 +22,7 @@ export default function Navbar() {
       <div className="navbar-inner">
         <Link to="/" className="navbar-brand" onClick={closeMenu}>
           <span className="brand-icon">🧠</span>
-          <span className="brand-text">NoteMind<span className="brand-highlight">AI</span></span>
+          <span className="brand-text">BrainNova<span className="brand-highlight">.AI</span></span>
         </Link>
 
         <div className="navbar-right">

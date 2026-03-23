@@ -4,12 +4,12 @@ const ThemeContext = createContext(null);
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('notemind_theme') || 'dark';
+    return localStorage.getItem('brainnova_theme') || 'dark';
   });
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('notemind_theme', theme);
+    localStorage.setItem('brainnova_theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {

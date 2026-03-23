@@ -13,6 +13,8 @@ const generateToken = (user) => {
 exports.register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
+    console.log('--- REGISTER ATTEMPT ---');
+    console.log('Name:', name, 'Email:', email);
 
     if (!name || !email || !password) {
       return res.status(400).json({ error: 'Name, email, and password are required.' });
@@ -23,11 +25,17 @@ exports.register = async (req, res) => {
     }
 
     // Check if user already exists
-    const { data: existing } = await supabase
+    const { data: existing, error: checkError } = await supabase
       .from('users')
       .select('id')
       .eq('email', email)
       .single();
+
+    if (checkError && checkError.code !== 'PGRST116') {
+      // PGRST116 = "no rows found" which is expected for new users
+      console.error('DB check error:', checkError);
+      return res.status(500).json({ error: 'Database error during registration.', details: checkError.message });
+    }
 
     if (existing) {
       return res.status(409).json({ error: 'Email already registered.' });
@@ -45,10 +53,11 @@ exports.register = async (req, res) => {
       .single();
 
     if (error) {
-      console.error('Register error:', error);
-      return res.status(500).json({ error: 'Failed to create account.' });
+      console.error('Register DB insert error:', JSON.stringify(error));
+      return res.status(500).json({ error: 'Failed to create account.', details: error.message });
     }
 
+    console.log('User created:', user.id);
     const token = generateToken(user);
 
     res.status(201).json({
@@ -57,8 +66,8 @@ exports.register = async (req, res) => {
       user: { id: user.id, name: user.name, email: user.email },
     });
   } catch (err) {
-    console.error('Register error:', err);
-    res.status(500).json({ error: 'Internal server error.' });
+    console.error('Register uncaught error:', err.message);
+    res.status(500).json({ error: 'Internal server error.', details: err.message });
   }
 };
 

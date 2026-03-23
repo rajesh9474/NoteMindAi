@@ -19,7 +19,7 @@ app.use('/documents', documentRoutes);
 
 // Health check
 app.get('/', (req, res) => {
-  res.json({ status: 'ok', message: 'NoteMind AI API is running.' });
+  res.json({ status: 'ok', message: 'BrainNova.AI API is running.' });
 });
 
 // Global error handler
@@ -38,5 +38,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`NoteMind AI server running on port ${PORT}`);
+  console.log(`BrainNova.AI server running on port ${PORT}`);
 });

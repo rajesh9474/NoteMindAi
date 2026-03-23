@@ -8,8 +8,8 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const savedToken = localStorage.getItem('notemind_token');
-    const savedUser = localStorage.getItem('notemind_user');
+    const savedToken = localStorage.getItem('brainnova_token');
+    const savedUser = localStorage.getItem('brainnova_user');
     if (savedToken && savedUser) {
       setToken(savedToken);
       setUser(JSON.parse(savedUser));
@@ -20,15 +20,15 @@ export function AuthProvider({ children }) {
   const login = (tokenValue, userData) => {
     setToken(tokenValue);
     setUser(userData);
-    localStorage.setItem('notemind_token', tokenValue);
-    localStorage.setItem('notemind_user', JSON.stringify(userData));
+    localStorage.setItem('brainnova_token', tokenValue);
+    localStorage.setItem('brainnova_user', JSON.stringify(userData));
   };
 
   const logout = () => {
     setToken(null);
     setUser(null);
-    localStorage.removeItem('notemind_token');
-    localStorage.removeItem('notemind_user');
+    localStorage.removeItem('brainnova_token');
+    localStorage.removeItem('brainnova_user');
   };
 
   const isAuthenticated = !!token;

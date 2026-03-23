@@ -22,7 +22,7 @@ export default function Signup() {
       login(res.data.token, res.data.user);
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.error || 'Registration failed. Please try again.');
+      setError(err.response?.data?.details || err.response?.data?.error || 'Registration failed. Please try again.');
     } finally {
       setLoading(false);
     }
